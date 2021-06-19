@@ -9,13 +9,74 @@
   </head>
   <body>
     <div id="app">{{ message }}</div>
+    <p></p>
     <div id="app-2">
-        <span v-bind:title="message">
-            Here is a demo of v-bind title!
-        </span>
+      <h5>DEMO of v-bind</h5>
+      <span v-bind:title="message"> Here is a demo of v-bind title! </span>
+    </div>
+    <p></p>
+    <div id="app-3">
+      <h5>DEMO of v-if</h5>
+      <p v-if="seen">Can see or NOT can see</p>
+    </div>
+
+    <div id="app-4">
+      <h5>DEMO of v-for</h5>
+      <ol>
+        <li v-for="todo in todos">
+          {{todo.text}}
+        </li>
+      </ol>
+    </div>
+
+    <div id="app-5">
+      <h5>DEMO of reverse message</h5>
+      <p>{{msg}}</p>
+      <button v-on:click="reverseMsg">Reverse MSG</button>
+    </div>
+
+    <div id="app-6">
+      <h5>DEMO of v-model</h5>
+      <p>{{msg}}</p>
+      <input type="text" v-model="msg">
     </div>
 
     <script>
+      var app6 = new Vue({
+        el:"#app-6",
+        data:{
+          msg:"hello"
+        }
+      })
+
+
+      var app5 = new Vue({
+        el:"#app-5",
+        data:{
+          msg:"Hello Vue-JS"
+        },
+        methods:{
+          reverseMsg:function(){
+            this.msg = this.msg.split('').reverse().join('-')
+          }
+        }
+      })
+
+      var app4 = new Vue({
+        el:'#app-4',
+        data:{
+          todos:[
+            {text:'Learn Javascript'},{text:'learn vue'},{text:'learn PMP'}
+          ]
+        }
+      })
+
+      var app3 = new Vue({
+        el:'#app-3',
+        data:{
+          seen:true
+        }
+      })
       var app = new Vue({
         el: "#app",
         data: {
@@ -23,14 +84,12 @@
         },
       });
 
-      var app2 = new Vue(
-          {
-              el:"#app-2",
-              data:{
-                  message: 'The page is loaded at ' + new Date().toLocaleString()
-              }
-          }
-      )
+      var app2 = new Vue({
+        el: "#app-2",
+        data: {
+          message: "The page is loaded at " + new Date().toLocaleString(),
+        },
+      });
     </script>
   </body>
 </html>

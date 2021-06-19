@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data and Method</title>
+    <script src="../vue2.6.js"></script>
+</head>
+<body>
+    <h1>Data and method learn</h1>
+    <div id="app">
+{{a}}---
+    </div>
+    <script>
+        var data = {a:"value of a"};
+        var vm = new Vue({
+            el:"#app",
+            data:data
+        })
+        //data.a = "change a value here";
+        vm.a = "change a from VUE.a reference";
+        vm.$data.a = "$.data .a is changed.....";
+
+
+        vm.$watch('a',function(newVal,oldVal){
+            console.log("OUTPUT THE new and old value:")
+            console.log(newVal,oldVal);
+
+        })
+
+        vm.a = "change a from VUE.a reference*****";
+    </script>
+</body>
+
+</html>

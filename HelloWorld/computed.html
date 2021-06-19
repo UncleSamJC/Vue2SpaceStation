@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computed</title>
+    <script src="../vue2.6.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>Use computed </h2>
+        <h2>{{fullName}}</h2>
+    
+        <h2>Use methods</h2>
+        <h2>{{number/10}}</h2>
+        {{isOK?'Confirmed':'Cancel'}}
+        <p></p>
+        {{text.split(',')}}
+        <p></p>
+        {{text.split(',').reverse().join(',')}}
+        
+    </div>
+    
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                firstName:'John',
+                lastName:'Doe',
+                number:100,
+                isOK:false,
+                text:"111,222,333"
+            },
+            computed:{
+                // fullName:function(){
+                //     return this.firstName+ "   " + this.lastName
+                // }
+                fullName:{
+                    set:function(){},
+                    get:function(){
+                        return this.firstName+this.lastName
+                    }
+                }
+            },
+            methods:{
+                getFullName:function(){
+                    return this.firstName + this.lastName
+                }
+            }
+
+
+        })
+    </script>
+</body>
+</html>
