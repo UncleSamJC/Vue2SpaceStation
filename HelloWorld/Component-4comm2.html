@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Base</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      {{msg}}
+      <cpn :cmovies="movies"></cpn>
+    </div>
+
+    <script>
+            Vue.component('cpn',{template:'<div>{{movies}}</div>',
+          data:function(){
+
+
+          },
+          props:['cmovies'],
+          data:function(){
+            return {}
+          }
+
+        })
+
+
+
+            var app = new Vue({
+              el: "#app",
+              data: {
+                msg: "hellooo",
+                movies:['AAA','BBB','CCC']
+              }
+
+
+              });
+    </script>
+  </body>
+</html>

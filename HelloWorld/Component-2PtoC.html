@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent to Child</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <my-component message="From Father - data "></my-component>
+    </div>
+
+    <script>
+      Vue.component('my-component',{
+        props:['message'],
+        template:'<div>{{message}}</div>'
+      })
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: "0000",
+        },
+      });
+    </script>
+  </body>
+</html>

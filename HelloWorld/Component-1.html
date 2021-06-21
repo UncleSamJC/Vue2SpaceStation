@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component - 1</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <h1>This is a H1 text</h1>
+    <div id="app">
+      <my-component></my-component>
+      <my-component></my-component>
+
+      <comp1></comp1>
+
+      <adder></adder>
+      <adder></adder>
+      <adder></adder>
+      <adder></adder>
+
+    </div>
+
+
+    <script>
+var data = {
+  counter:0
+};
+
+      Vue.component('my-component',{
+        template:'<h1>This is a H1 text</h1>'
+      })
+
+      Vue.component('comp1',{
+        template:'<div> {{message}}</div>',
+        data:function(){
+          return {message:'Comp content here '}
+        }
+      })
+
+      Vue.component('adder',{
+        template:'<button @click="counter++">{{counter}}</button>',
+        data:function(){
+          return data;
+        }
+      })
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: "hellooo",
+        },
+      });
+    </script>
+  </body>
+</html>

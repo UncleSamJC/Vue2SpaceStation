@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bind Class</title>
+  <script src="../vue2.6.js"></script>
+</head>
+
+<body>
+  <div id="app">{{msg}}
+    <a :href="url">Bing</a>
+    <p></p>
+    <img :src="imgUrl" alt="XXXX">
+    <div class="static" :class={'active':isActive,'error':isError}>
+      <p>--------------</p>
+    </div>
+
+
+
+  </div>
+
+  <div id="app2">
+    <div :class="[activeCls,errorCls]">
+      <p>###########</p>
+    </div>
+
+    <button :class="classes">A button HERE </button>
+
+    <div :style="{'color':color, 'fontSize':fontSize+'px'}">
+      Text size 50, red
+    </div>
+
+    <div :style='styles'>
+Green and Text Size 30
+    </div>
+  </div>
+
+  <div style="color: red; font-size: 14px;">TEXT with direct style</div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        msg: "hellooo",
+        url: 'Http://www.bing.com',
+        imgUrl: './imgs/user.jpg',
+        isActive: true,
+        isError: true
+
+      }
+    });
+
+    var app2 = new Vue({
+      el: "#app2",
+      data: {
+        activeCls: 'active',
+        errorCls: 'error',
+        size: 'large',
+        disabled: true,
+        color:'red',
+        fontSize: 50,
+        styles:{
+          color:'Green',
+          fontSize:30 + 'px'
+        }
+      },
+      computed: {
+        classes: function () {
+          return [
+            'btn', {
+              ['btn-' + this.size]: this.size !== "", ['btn-disabled']: this.disabled
+            }
+
+          ];
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
