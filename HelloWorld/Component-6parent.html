@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parent message to send data</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <p>hh</p>
+    <div id="app">
+      {{msg}}
+      <comp-a></comp-a>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div id="app2">
+      {{msgg}}
+      <button @click="handleRef">Reach children through REF</button>
+      <comp-b ref="bibi"></comp-b>
+    </div>
+
+    <script>
+      Vue.component("comp-a", {
+        template:
+          '<button @click="handleEvent">Change data from $parent</button>',
+        methods: {
+          handleEvent: function () {
+            console.log("---now console this----");
+
+            console.log(this);
+            this.$parent.msg = "This info comes from comp-a";
+          },
+        },
+      });
+
+      Vue.component("comp-b", {
+        template: "<div>Children component</div>",
+        data: function () {
+          return {
+            message: "data from child, I want milk",
+          };
+        },
+      });
+
+      var app2 = new Vue({
+        el: "#app2",
+        data: {
+          msgg: "",
+        },
+        methods: {
+          handleRef: function () {
+            var msg = this.$refs.bibi.message;
+
+            console.log(msg);
+            this.msgg = msg;
+          },
+        },
+      });
+
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: " ",
+        },
+      });
+    </script>
+  </body>
+</html>

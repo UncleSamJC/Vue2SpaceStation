@@ -14,16 +14,23 @@
       <my-component></my-component>
 
       <comp1></comp1>
+      <br>
 
       <adder></adder>
       <adder></adder>
       <adder></adder>
       <adder></adder>
-
+      <br>
+      <my-cpn></my-cpn>
+      <template id="cpn">
+        <h1>A seperate template from div </h1>
+        <div>div here</div>
+                </template>
     </div>
 
 
     <script>
+
 var data = {
   counter:0
 };
@@ -32,10 +39,14 @@ var data = {
         template:'<h1>This is a H1 text</h1>'
       })
 
+      Vue.component('my-cpn','cpn'
+
+      )
+
       Vue.component('comp1',{
-        template:'<div> {{message}}</div>',
+        template:'<div> {{message}} ---- {{msg}}</div>',
         data:function(){
-          return {message:'Comp content here '}
+          return {message:'Comp content here ',msg:"msg as the second message"}
         }
       })
 

@@ -8,13 +8,54 @@
     <script src="../vue2.6.js"></script>
   </head>
   <body>
-    <div id="app">{{msg}}</div>
+    <div id="app">{{msg}}
+      <p></p>
+      <!-- <input type="radio" :checked="picked">
+      <label for="ff">FFFFFF</label> -->
+
+      <p>------------------------</p>
+      <input type="radio" v-model="picked" value="html" id="html">
+      <label for="html">HTML</label>
+      <br>
+      <input type="radio" v-model="picked" value="js" id="js">
+      <label for="js">JAVASCRIPT</label>
+      <br>
+      <input type="radio" v-model="picked" value="css" id="css">
+      <label for="css">CSS</label>
+      <br>
+      <p>You picked:{{picked}}</p>
+      <p>==========================</p>
+
+      <input type="checkbox" v-model="checked" value="html2" id="html2">
+      <label for="html">HTML</label>
+      <br>
+      <input type="checkbox" v-model="checked" value="js2" id="js2">
+      <label for="js">JAVASCRIPT</label>
+      <br>
+      <input type="checkbox" v-model="checked" value="css2" id="css2">
+      <label for="css">CSS</label>
+      <p>You checked:{{checked}}</p>
+
+      <p>==========================</p>
+      <select name="select" id="select" v-model="selected" multiple>
+        <option>Apple</option>
+        <option value="banana">Banana</option>
+        <option value="pear">Pear</option>
+      </select>
+      <p>You checked:{{selected}}</p>
+
+
+    </div>
+
 
     <script>
       var app = new Vue({
         el: "#app",
         data: {
           msg: "hellooo",
+          picked:'js',
+          checked:[],
+          selected:[]
         },
       });
     </script>

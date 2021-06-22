@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bus</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <div id="app">{{msg}}
+      <component-a></component-a>
+    </div>
+
+    <script>
+      var bus = new Vue();
+      console.log('----log the bug----');
+      console.log(bus);
+      
+      
+
+      Vue.component('component-a',{
+        template:'<button @click=handleEvent>Click to emit</button>',
+        data:function(){
+          return {};
+        },
+        methods:{
+          handleEvent:function(){
+            bus.$emit('on-message',"This message is come from component-a");
+          }
+        }
+      })
+
+      var app = new Vue({
+        el: "#app",
+        data: {
+          msg: " ",
+        },
+        mounted:function(){
+          var _this = this;
+          bus.$on('on-message',function(msg){
+            _this.msg = msg;
+          console.log('--mounted----');
+          
+          console.log(bus);
+          
+          })
+        }
+      });
+    </script>
+  </body>
+</html>
