@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot with a Name</title>
+    <script src="./vue2.6.js"></script>
+</head>
+<body>
+    <div id="app">
+    <base-layout>
+    <p slot="header">标题信息</p>
+    <p>Content 1111</p>
+    <p>Content 2222</p>
+    <p slot="footer">底部的信息</p></p>
+    </base-layout>
+    </div>
+
+    <script>
+        Vue.component('base-layout',{
+            template: `<div>
+            <header>
+            <slot name='header'></slot>
+            </header>
+            <main>
+           
+            </main>
+            <footer>
+            <slot name='footer'></slot>
+            </footer>
+        </div>
+            `
+        })
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>
