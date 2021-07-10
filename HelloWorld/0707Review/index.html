@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review 0707</title>
+    <script src="../vue2.6.js"></script>
+  </head>
+  <body>
+    <div id="app">{{ message }}
+        <input type="text" v-model="message"></input>
+        <input type="text" :class="{nice:true,notnice:false,apple:true}"></input>
+
+
+        <ul>
+            <li v-for="(item,key,index) in fruits">{{item.name}},{{item.index}},{{item.key}}</li>
+
+        </ul>
+        <a href="www.b.com">跳转</a>
+        <a href="www.b.com" @click.stop="handle">跳转</a>
+        <a href="www" @click.prevent="handle">跳转</a>
+        <div v-bind:class="{active: isActive}"></div>
+        <div v-bind:class="[activeClass,errorClass]"></div>
+
+        <ul>
+            <!-- <li :key="item.id" v-for="item in fruits">{{  }}</li> -->
+        </ul>
+
+        <p>----</p>
+        <div v-cloak>{{fruits}}</div>
+    </div>
+    <p></p>
+  
+    <script>
+        //什么是指令？ -- 就是一个自定义属性
+        //代码加载的时候先加载HTML 把插值语法当做HTML内容加载到页面上 当加载完js后才把插值语法替换掉 所以我们会看到闪烁问题
+        //v-text输出的是纯文本，浏览器不会对其再进行html解析
+// html会将其当html标签解析后输出
+//v-once 执行一次性的插值【当数据改变时，插值处的内容不会继续更新】
+//v-model是一个指令，限制在 <input>、<select>、<textarea>、components（组件） 中使用
+    //什么是双向数据绑定
+// 当数据发生变化的时候，视图也就发生变化
+// 当视图发生变化的时候，数据也会跟着同步变化
+//Vue双向绑定原理 Object.defineProperty() 的用法
+
+//事件 v-on ，简写 @ 
+//v-on:click="handleClick"
+
+//Vue事件：通过默认的事件参数；通过￥event使用
+
+//事件修饰符 .stop 阻止冒泡； .prevent 取消默认事件 
+
+ 
+      var app = new Vue({
+        
+        el: "#app",
+        data: {
+            activeClass:'activeClass',
+        errorClass:'errorClass',
+            isActive:true,
+          message: "Hello Vue!",
+          fruits:[{
+              name:'bana'
+          },
+          {
+              name:'appl'
+          },
+          {
+              name:'orgn'
+          },
+          {
+              name:'pear'
+          },
+        ]
+        },
+      });
+
+    </script>
+    <style>
+        .apple{
+            font-size: 30px;
+            background-color: aquamarine;
+        }
+    </style>
+  </body>
+</html>

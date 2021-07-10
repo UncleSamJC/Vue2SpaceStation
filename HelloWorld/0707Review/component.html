@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue2.6.js"></script>
+</head>
+<body>
+    <div id="app"><h1>Component</h1>
+    <com-a></com-a>
+    <com-a></com-a>
+    <com-a></com-a>
+
+    <com-b></com-b>
+
+    <p></p>
+    <com-c></com-c>
+    <com-c></com-c>
+    <com-c></com-c>
+
+    <com-d></com-d>
+    <com-d></com-d>
+    </div>
+    
+    <script>
+Vue.component('com-a',{
+    template:`<div>Com AAAAAAA</div>`
+})
+
+Vue.component('ComB',{
+    template:`<div>Tody follow me to say -- {{msg}}</div>`,
+    data() {
+        return {
+        msg:'hello worldllllldfd'}
+    }
+})
+
+Vue.component('ComC',{
+    template:`<div>
+        <button @click="handleClick">{{count}}</button>
+    </div>`,
+    data() {
+        return {
+            count:0
+        }
+    },
+    methods:{
+        handleClick() {
+            this.count ++;
+        }
+    }
+})
+
+
+
+var child = {
+    template:`<div>This is a DDD template </div>`
+}
+
+Vue.component('ComD',child)
+
+var vm = new Vue({
+    el:"#app",
+    data:{
+
+    }
+})
+
+
+    </script>
+
+
+    
+</body>
+</html>

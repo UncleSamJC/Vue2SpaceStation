@@ -9,10 +9,18 @@
 </head>
 <body>
     <div id="app">
+        <h1>还是按照模板来渲染，上面只是一些原始材料</h1>
     <base-layout>
-    <p slot="header">标题信息</p>
+    <div slot="header">标题
+        <h1>标题信息H1</h1>
+        <h3>标题信息H2</h3>
+        <h3>标题信息H3</h3>
+        <h3>标题信息H4</h3>
+        <h5>标题信息H5</h5>
+    </div>
     <p>Content 1111</p>
     <p>Content 2222</p>
+    <p>Will to go slot with no name </p>
     <p slot="footer">底部的信息</p></p>
     </base-layout>
     </div>
@@ -20,15 +28,17 @@
     <script>
         Vue.component('base-layout',{
             template: `<div>
-            <header>
+            
             <slot name='header'></slot>
-            </header>
-            <main>
-           
-            </main>
-            <footer>
+ 
+           <p>这里模板里的</p>
+
+           <p>这是模板里的</p>
+
+            
+<footer>
             <slot name='footer'></slot>
-            </footer>
+        </footer>
         </div>
             `
         })

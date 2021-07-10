@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> -- Promise -- </title>
+</head>
+<body>
+    <h1>Promise</h1>
+    <script>
+        // A common example 
+   /*     var p = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                var flag = true;
+                if(flag){
+                    resolve('hello')
+                }else{
+                    reject('Failed!!!!')
+                }
+            },100);
+        });
+
+        p.then(function(data){
+            console.log(data);
+            console.log("dataaaaa");
+        },function(info){
+            console.log(info);
+            console.log("inforooo");
+        }) **/
+/*
+    function queryData(url) {
+    var p = new Promise(function(resolve,reject){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState !=4 ) return;
+            if(xhr.readyState == 4 && xhr.status ==200){
+                resolve(xhr.responseText);
+            }else{
+                reject('Server error')
+            }
+        };
+        xhr.open('get',url);
+        xhr.send(null);
+    });
+    return p;
+}
+
+queryData('http://')
+    .then((result) => {console.log(result);
+        return queryData('http://...')
+    }).catch((err) => {
+        console.log(err);
+    }); */
+
+fetch('1.json').then(function(data){
+    console.log(data.text());
+    console.log("------");
+    return data;
+
+    
+},function(info){}).then(function(data){
+    console.log(data);
+})
+
+import axios from 'axios';
+
+    </script>
+</body>
+</html>

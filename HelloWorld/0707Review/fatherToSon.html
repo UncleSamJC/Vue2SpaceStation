@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue2.6.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <div>{{pmsg}}</div>
+        <menu-item title="From Father"></menu-item>
+        <menu-item :title="ptitle" content="hello"></menu-item>
+
+    </div>
+
+    <script>
+        Vue.component('menu-item',{
+            props:['title','content'],
+            data(){
+                return {
+                    msg:'子组件自己的数据'
+                }
+            },
+            template:`<div>{{msg + "-子组件的msg--" + title + "---我两边是父组件来的--" + content}}</div>`
+        })
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                pmsg:'父组件的内容',
+                ptitle:'这个是动态绑定的属性哦'
+
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

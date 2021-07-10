@@ -5,18 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Parent to Child</title>
-    <script src="../vue2.6.js"></script>
+    <script src="./vue2.6.js"></script>
   </head>
   <body>
     <div id="app">
-      <my-component message="From Father - data "></my-component>
+      <my-component message="From Father - data 来自父组件的数据 "></my-component>
     </div>
 
     <script>
       Vue.component('my-component',{
         props:['message'],
-        template:'<div>{{message}}</div>'
+        template:'<div>{{message}} --- 我是子组件</div>'
       })
+
       var app = new Vue({
         el: "#app",
         data: {
