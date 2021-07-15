@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Promise</h1>
+    <button id="btn">抽奖</button>
+
+    <script>
+
+        function randX() {
+            let x = Math.ceil(Math.random() * 100);
+            // console.log(x);
+            return x;
+        }
+
+        var btn = document.querySelector("#btn");
+        // var btn = document.getElementById("btn");
+
+        // btn.addEventListener("click",function() {
+        //     setTimeout(()=>{
+        //         let n = randX();
+        //         if(n<50){
+        //             alert("you win!")
+        //         }else{
+        //             alert("you lose")
+        //         }
+        //     },1000)
+
+        // })
+
+        // return new Promise((resolve, reject) => {
+
+        // });
+
+        btn.addEventListener('click', function () {
+
+            const p = new Promise((resovle, reject) => {
+
+                let n = randX();
+
+                if (n < 50) {
+                    resovle(n)
+                    console.log("resolve called");
+                } else {
+                    reject(n);
+                    console.log("reject called");
+                }
+            });
+
+            p.then((value) => {
+                console.log(value);
+                alert("you win ")
+            }, (reason) => {
+                console.log(reason);
+                alert("you lose")
+            })
+
+
+
+        })
+
+
+
+        //  let p = new Promise(()=>{})
+        //  setTimeout(console.log,0,p)
+        //  console.log(p);
+
+    </script>
+</body>
+
+</html>
