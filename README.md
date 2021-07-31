@@ -1,2 +1,2 @@
 # Vue2SpaceStation
-## This is a test zone
+## This is a practice zone
